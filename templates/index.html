@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero-banner">
+    <div class="row align-items-center g-3">
+        <div class="col-lg-8">
+            <p class="mb-2 text-uppercase small fw-semibold" style="letter-spacing: 0.12em; opacity: 0.9;">Fresh favorites</p>
+            <h1>Cook with confidence, one recipe at a time.</h1>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+            <a href="{{ url_for('add_recipe') }}" class="btn btn-theme btn-lg fw-bold">+ Add New Recipe</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-8 offset-md-2 search-wrap">
+        <input type="text" id="searchBar" class="form-control form-control-lg shadow-sm" placeholder="🔍 Search recipes by title or description...">
+    </div>
+</div>
+
+<div class="row" id="recipeGrid">
+    {% if recipes %}
+        {% for recipe in recipes %}
+        <div class="col-md-4 mb-4 recipe-card-container">
+            <div class="card h-100 shadow-sm recipe-card border-0">
+                <div class="card-body">
+                    <h5 class="card-title recipe-title">{{ recipe.title }}</h5>
+                    <p class="card-text recipe-desc">{{ recipe.description }}</p>
+                </div>
+                <div class="card-footer text-end">
+                    <a href="{{ url_for('view_recipe', id=recipe.id) }}" class="btn btn-outline-theme btn-sm">View Recipe</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center text-muted mt-5">
+            <h3>No recipes found.</h3>
+            <p>Click "Add Recipe" to start building your cookbook!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

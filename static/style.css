@@ -1,0 +1,209 @@
+:root {
+    --bg-soft: #f6f1eb;
+    --surface: #fffdfb;
+    --surface-strong: #fbe7dc;
+    --primary: #2f6f5d;
+    --primary-dark: #214d43;
+    --accent: #df7d4f;
+    --accent-soft: #f9d7c3;
+    --text: #1d2a27;
+    --muted: #5d6f6a;
+    --shadow: 0 18px 40px rgba(34, 62, 56, 0.12);
+}
+
+body {
+    position: relative;
+    background: linear-gradient(180deg, #f9f5f1 0%, #f3efe7 100%);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    background-image:
+        radial-gradient(circle at 12% 12%, rgba(115, 170, 88, 0.14) 0 30px, transparent 31px),
+        radial-gradient(circle at 38% 25%, rgba(255, 177, 71, 0.12) 0 26px, transparent 27px),
+        radial-gradient(circle at 72% 18%, rgba(113, 180, 107, 0.12) 0 28px, transparent 29px),
+        radial-gradient(circle at 88% 38%, rgba(214, 111, 61, 0.10) 0 24px, transparent 25px),
+        radial-gradient(circle at 20% 68%, rgba(127, 181, 89, 0.10) 0 28px, transparent 29px),
+        radial-gradient(circle at 60% 72%, rgba(239, 171, 89, 0.12) 0 30px, transparent 31px),
+        radial-gradient(circle at 80% 82%, rgba(128, 176, 83, 0.11) 0 26px, transparent 27px);
+    opacity: 0.9;
+}
+
+body::after {
+    background-image:
+        linear-gradient(120deg, transparent 0 44%, rgba(91, 141, 72, 0.08) 44% 46%, transparent 46% 100%),
+        linear-gradient(30deg, transparent 0 48%, rgba(226, 122, 68, 0.07) 48% 50%, transparent 50% 100%),
+        linear-gradient(90deg, transparent 0 58%, rgba(103, 169, 90, 0.08) 58% 60%, transparent 60% 100%);
+    background-size: 420px 420px;
+    opacity: 0.9;
+}
+
+.container, .navbar .container {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar {
+    padding: 1rem 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+    box-shadow: 0 8px 25px rgba(30, 60, 53, 0.18);
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+    font-size: 1.5rem;
+}
+
+.bg-theme { background-color: var(--primary) !important; }
+.text-theme { color: var(--primary) !important; }
+.btn-theme {
+    background: linear-gradient(135deg, var(--accent) 0%, #c86335 100%);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 10px 20px rgba(223, 125, 79, 0.25);
+}
+.btn-theme:hover {
+    background: linear-gradient(135deg, #c86335 0%, #b45a2f 100%);
+    border-color: #b45a2f;
+    color: white;
+}
+.btn-outline-theme {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-outline-theme:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, rgba(47, 111, 93, 0.95), rgba(60, 94, 83, 0.92));
+    border-radius: 1.5rem;
+    color: white;
+    padding: 2rem 2.2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.hero-banner h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+}
+
+.hero-banner p {
+    color: rgba(255,255,255,0.82);
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+.search-wrap {
+    position: relative;
+}
+
+.search-wrap input {
+    border: 1px solid rgba(47, 111, 93, 0.18);
+    border-radius: 999px;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 25px rgba(31, 53, 48, 0.08);
+}
+
+.recipe-card {
+    border: 1px solid rgba(47, 111, 93, 0.08);
+    border-radius: 1.15rem;
+    overflow: hidden;
+    background: var(--surface);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow) !important;
+}
+
+.recipe-card .card-body {
+    background: linear-gradient(180deg, rgba(246,241,235,0.6), rgba(255,255,255,0.9));
+    padding: 1.5rem;
+}
+
+.recipe-title {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+.recipe-desc {
+    color: var(--muted) !important;
+    line-height: 1.6;
+}
+
+.card-footer {
+    background: #fff !important;
+    border-top: 1px solid rgba(47,111,93,0.08) !important;
+    padding: 1rem 1.25rem 1.2rem;
+}
+
+.card {
+    border-radius: 1.15rem;
+}
+
+.form-control, .form-select, textarea {
+    border-radius: 0.9rem;
+    border: 1px solid rgba(47, 111, 93, 0.18);
+    padding: 0.8rem 1rem;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    box-shadow: 0 0 0 0.2rem rgba(47, 111, 93, 0.15);
+    border-color: rgba(47, 111, 93, 0.35);
+}
+
+.input-group .form-control {
+    border-radius: 0.9rem 0 0 0.9rem;
+}
+
+.input-group .btn {
+    border-radius: 0 0.9rem 0.9rem 0;
+}
+
+.instructions-text {
+    background: linear-gradient(180deg, #f9f4ef 0%, #f3efe8 100%);
+    border: 1px solid rgba(47, 111, 93, 0.08);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    border-radius: 1rem;
+    color: var(--text);
+}
+
+.list-group-item {
+    border-color: rgba(47, 111, 93, 0.1);
+    padding-left: 0.5rem;
+}
+
+.alert-success {
+    background-color: rgba(47, 111, 93, 0.09);
+    color: var(--primary-dark);
+    border-color: rgba(47, 111, 93, 0.18);
+}
+
+.alert-danger {
+    background-color: rgba(223, 125, 79, 0.08);
+    border-color: rgba(223, 125, 79, 0.18);
+    color: #8d4d2b;
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        padding: 1.5rem 1.2rem;
+    }
+}

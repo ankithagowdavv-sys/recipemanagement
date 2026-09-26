@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow border-0">
+            <div class="card-header bg-theme text-white">
+                <h3 class="mb-0">{{ action }} Recipe</h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Recipe Title</label>
+                        <input type="text" name="title" class="form-control" required value="{{ recipe.title if recipe else '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Short Description</label>
+                        <input type="text" name="description" class="form-control" value="{{ recipe.description if recipe else '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Ingredients</label>
+                        <div id="ingredientList">
+                            {% if ingredients %}
+                                {% for item in ingredients %}
+                                <div class="input-group mb-2 ingredient-row">
+                                    <input type="text" name="ingredient[]" class="form-control" value="{{ item }}" required>
+                                    <button type="button" class="btn btn-outline-danger remove-btn">X</button>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="input-group mb-2 ingredient-row">
+                                    <input type="text" name="ingredient[]" class="form-control" placeholder="e.g. 2 cups of flour" required>
+                                    <button type="button" class="btn btn-outline-danger remove-btn">X</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <button type="button" id="addIngredientBtn" class="btn btn-outline-secondary btn-sm mt-1">+ Add Ingredient</button>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Instructions</label>
+                        <textarea name="instructions" class="form-control" rows="6" required>{{ recipe.instructions if recipe else '' }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-theme w-100 fs-5 text-white fw-bold">Save Recipe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
